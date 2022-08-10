@@ -28,19 +28,14 @@
 <script type="text/javascript">
 
 
-  function bondTemplate(film){
+  function bondTemplate(song){
     return `
         <div class="film">
-            <b>Film</b>: ${film.Film} <br />
-            <b>Title</b>: ${film.Title}<br />
-            <b>Year</b>: ${film.Year} <br />
-            <b>Director</b>: ${film.Director} <br />
-            <b>Producers</b>: ${film.Producers} <br />
-            <b>Writers</b>: ${film.Writers} <br />
-            <b>Composer</b>: ${film.Composer} <br />
-            <b>Budget</b>: ${film.Budget} <br />
-            <b>BoxOffice</b>: ${film.BoxOffice} <br />
-            <div class="pic"><img src="thumbnails/${film.Image}" /></div>
+            <b>Title</b>: ${song.Title} <br />
+            <b>Artist</b>: ${song.Artist}<br />
+            <b>Year</b>: ${song.Year} <br />
+            <b>Views</b>: ${song.views} <br />
+            <div class="pic"><img src="images/${song.Image}" /></div>
       </div>
     `;
   }
@@ -66,7 +61,7 @@ $(document).ready(function() {
 
      $("#films").html("");
 
-    $.each(data.films, function(i, item){
+    $.each(data.song, function(i, item){
       let myData = bondTemplate(item);
       $("<div></div>").html(myData).appendTo("#films");
     })
@@ -91,9 +86,9 @@ alert('Error - ' + xhr.status + ': ' + xhr.statusText);
 </script>
 </head>
 	<body>
-	<h1>Bond Web Service</h1>
-		<a href="year" class="category">Bond Films By Year</a><br />
-		<a href="box" class="category">Bond Films By International Box Office Totals</a>
+	<h1>Youtube's Non Copyright Music</h1>
+		<a href="year" class="category">Top 10 Most Viewed Non Copyright Song</a><br />
+		<a href="box" class="category">My Top 10 Most Viewed Non Copyright Song</a>
 		<h3 id="filmtitle">Title Will Go Here</h3>
 		<div id="films">
       <!--
@@ -112,13 +107,5 @@ alert('Error - ' + xhr.status + ': ' + xhr.statusText);
     -->
 		</div>
 		<div id="output">Results go here</div>
-    <div class="film">
-        <b>Film</b>: On & On <br />
-        <b>Cartoon</b>: Cartoon<br />
-        <b>Year</b>: 2015 <br />
-        <b>views</b>: 465,183,688            <br />
-        <b>Play</b>: <br /><audio controls><source src="mp3/heroes-tonight.mp3" type="audio/mpeg"> Your browser does not support the audio tag.</audio><br />
-        <div class="pic"><img src="images/cartoon.jpg" /></div>
-        </div>
 	</body>
 </html>
