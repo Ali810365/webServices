@@ -34,8 +34,8 @@
             <b>Title</b>: ${song.Title} <br />
             <b>Artist</b>: ${song.Artist}<br />
             <b>Year</b>: ${song.Year} <br />
-            <b>Views</b>: ${song.views} <br />
-            <div class="pic"><img src="images/${song.Image}" /></div>
+            <b>Views</b>: ${song.Views} <br />
+            <div class="pic"><img src="thumbnails/${song.Image}" /></div>
       </div>
     `;
   }
