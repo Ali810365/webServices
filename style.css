@@ -1,21 +1,102 @@
 
-body {font-family:georgia;}
+* {
+  font-family:georgia;
+  margin: 0;
+  box-sizing: 0;
+  
+
+}
+
+#films{
+  width: 100%;
+  
+  display: flex;
+}
+
+.film-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
   .film{
-    border:1px solid #E77DC2;
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom:5px;
-    position:relative;  
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: bisque
+  }
+
+  .film-details{
+    margin-left: 10px;
+    width: 100%;
+    background-color: inherit;
   }
  
   .pic{
-    position:absolute;
-    right:10px;
-    top:10px;
+    
   }
 
   .pic img{
-    max-width: 150px;
+    width: 300px;
+    max-width: 300px;
+    
   }
 
+
+
+  .music-container{
+    margin-top: 5px;
+    background-color: rgb(245, 186, 115);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+    
+}
+
+.buttons{
+   
+   
+}
+
+.play-btn{
+    border: 0;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.progress-wrapper{
+    width: 75%;
+    display: flex;
+    margin: 10px;
+    height: 7px;
+    background-color: rgb(238, 238, 238);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.progress-bar{
+    background-color: rgb(148, 188, 223);
+    height: 7px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: width 0.1s linear;
+}
+
+.volume-wrapper{
+    width: 15%;
+    
+    
+}
+
+#volume{
+    width: 100%;
+    border: 0;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 5px;
+}

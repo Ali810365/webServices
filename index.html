@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Bond Web Service</h1>
-		<a href="year" class="category">Bond Films By Year</a><br />
-		<a href="box" class="category">Bond Films By International Box Office Totals</a>
-		<h3 id="filmtitle">Title Will Go Here</h3>
-		<div id="films">
-     
-      <div class="film">
-            <b>Film</b>: On & On <br />
-            <b>Cartoon</b>: Cartoon<br />
-            <b>Year</b>: 2015 <br />
-            <b>views</b>: 465,183,688            <br />
-            <b>Play</b>: <br /><audio controls><source src="mp3/on-and-on.mp3" type="audio/mpeg"> Your browser does not support the audio tag.</audio><br />
-            <div class="pic"><img src="images/cartoon.jpg" /></div>
-      </div>
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <h1>Bond Web Service</h1>
+  <a href="year" class="category">Bond Films By Year</a><br />
+  <a href="box" class="category">Bond Films By International Box Office Totals</a>
+  <h3 id="filmtitle">Title Will Go Here</h3>
+  <div id="films">
+
+    <div class="film-wrapper">
       <div class="film">
+      <div class="pic"><img src="thumbnails/warriyo.jpg" /></div>
+      <div class="film-details">
         <b>Film</b>: On & On <br />
         <b>Cartoon</b>: Cartoon<br />
         <b>Year</b>: 2015 <br />
-        <b>views</b>: 465,183,688            <br />
-        <b>Play</b>: <br /><audio controls><source src="mp3/heroes-tonight.mp3" type="audio/mpeg"> Your browser does not support the audio tag.</audio><br />
-        <div class="pic"><img src="images/cartoon.jpg" /></div>
+        <b>views</b>: 465,183,688 <br />
+
+      </div>
+      <div class="music-container">
+        <audio src="mp3/invincible.mp3" id="audio"></audio>
+        <div class="buttons">
+            <button id="play" class="play-btn">
+                <i class="fas fa-play"></i>
+            </button>
         </div>
-   
-		</div>
-		<div id="output">Results go here</div>
+        
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+        </div>
+        </div>
+
+        <div class="volume-wrapper">
+            <button id="volume">
+                <i class="fa-solid fa-volume-off"></i>
+            </button>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+  </div>
+  <div id="output">Results go here</div>
 </body>
+
 </html>
