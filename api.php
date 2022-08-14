@@ -29,7 +29,7 @@ if(isset($_REQUEST['cat']))
 	switch($_REQUEST['cat'])
 	{//determine contents of 'cat'
 		case "box":
-			include('data/top-most-viewed.js'); //"box" orders by box office results
+			include('data/my-top-favorites.js'); //"box" orders by box office results
 			break;
 		default:
 			include('data/top-most-viewed.js'); //default orders by year

@@ -1,15 +1,23 @@
 <html>
 <head>
-<title>Bond Web Service Demo</title>
+<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>NCS Web Service Demo</title>
 <style>
 	body {font-family:georgia;}
-
-  .film{
+  #list{
+    
+  }
+  .song{
     border:1px solid #E77DC2;
     border-radius: 5px;
     padding: 5px;
-    margin-bottom:5px;
-    position:relative;  
+    margin: auto;
+    position:relative; 
+    width: 50%;
+    
   }
  
   .pic{
@@ -19,30 +27,59 @@
   }
 
   .pic img{
-    max-width: 50px;
+    max-width: 75px;
   }
 
 </style>
+
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 
 <script type="text/javascript">
 
-
-  function bondTemplate(song){
+  
+  function musicTemplate(song){
     return `
-        <div class="film">
+    <div class="song-wrapper">
+        <div class="song">
+            <div class="pic"><img src="thumbnails/${song.Image}" /></div>
+            <div class="song-details">
             <b>Title</b>: ${song.Title} <br />
             <b>Artist</b>: ${song.Artist}<br />
             <b>Year</b>: ${song.Year} <br />
             <b>Views</b>: ${song.Views} <br />
-            <div class="pic"><img src="thumbnails/${song.Image}" /></div>
+            </div>
+            <div class="music-container">
+        <audio src="mp3/${song.Play}.mp3" id="audio"></audio>
+        <div class="buttons">
+            <button id="play" class="play-btn">
+                <i class="fas fa-play"></i>
+            </button>
+        </div>
+        
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+        </div>
+        </div>
+
+        <div class="volume-wrapper">
+            <button id="volume">
+                <i class="fa-solid fa-volume-off"></i>
+            </button>
+        </div>
+            
       </div>
+      </div>
+
+      
     `;
   }
 
+
+  
+
   
 $(document).ready(function() { 
- 
+  
  $('.category').click(function(e){
    e.preventDefault(); //stop default action of the link
    cat = $(this).attr("href");  //get category from URL
@@ -57,22 +94,15 @@ $(document).ready(function() {
 
   
      //place data.title on page
-     $("#filmtitle").html(data.title);
+     $("#mytitle").html(data.title);
 
-     $("#films").html("");
+     $("#list").html("");
 
     $.each(data.song, function(i, item){
-      let myData = bondTemplate(item);
-      $("<div></div>").html(myData).appendTo("#films");
+      let myData = musicTemplate(item);
+      $("<div></div>").html(myData).appendTo("#list");
     })
 
-     
-
-    /*
-    let myData = JSON.stringify(data,null,4);
-    myData = "<pre>" + myData + "</pre>";
-    $("#output").html(myData);
-     */
      
    });
    request.fail(function(xhr, status, error ) {
@@ -83,29 +113,26 @@ alert('Error - ' + xhr.status + ': ' + xhr.statusText);
 }); 
 
 
+
+
+
+
 </script>
 </head>
 	<body>
 	<h1>Youtube's Non Copyright Music</h1>
+    <p>This program returns youtubes a list of the top 10 most viewed youtube videos</p>
+    <p>By Clicking the links below you can view the list or my personal list</p>
 		<a href="year" class="category">Top 10 Most Viewed Non Copyright Song</a><br />
 		<a href="box" class="category">My Top 10 Most Viewed Non Copyright Song</a>
-		<h3 id="filmtitle">Title Will Go Here</h3>
-		<div id="films">
-      <!--
-      <div class="film">
-            <b>Film</b>: 1 <br />
-            <b>Title</b>: Dr. No<br />
-            <b>Year</b>: 1962 <br />
-            <b>Director</b>: Terence Young <br />
-            <b>Producers</b>: Harry Saltzman and Albert R. Broccoli <br />
-            <b>Writers</b>: Richard Maibaum, Johanna Harwood and Berkely Mather <br />
-            <b>Composer</b>: Monty Norman <br />
-            <b>Budget</b>: $1,000,000.00 <br />
-            <b>BoxOffice</b>: $59,567,035.00 <br />
-            <div class="pic"><img src="thumbnails/dr-no.jpg" /></div>
-      </div>
-    -->
+		<h3 id="mytitle">Title Will Go Here</h3>
+		<div id="list">
+      
+
 		</div>
 		<div id="output">Results go here</div>
+    
+    
+  <script src="script.js"></script>
 	</body>
 </html>

@@ -6,6 +6,7 @@ const progressWrapper = document.querySelector('.progress-wrapper')
 const volume = document.querySelector('#volume')
 const volumeWrapper = document.querySelector('.volume-wrapper')
 
+
 function playSong(){
     musicContainer.classList.add('play')
     playBtn.querySelector('i.fas').classList.remove('fa-play')
@@ -89,3 +90,5 @@ volume.addEventListener('click', () => {
         volumeLow()
     }
 })
+
+
