@@ -5,7 +5,8 @@
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>NCS Web Service Demo</title>
-<style>
+<!--
+  <style>
 	body {font-family:georgia;}
   #list{
     
@@ -31,51 +32,11 @@
   }
 
 </style>
-
+-->
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 
 <script type="text/javascript">
 
-  
-  function musicTemplate(song){
-    return `
-    <div class="song-wrapper">
-        <div class="song">
-            <div class="pic"><img src="thumbnails/${song.Image}" /></div>
-            <div class="song-details">
-            <b>Title</b>: ${song.Title} <br />
-            <b>Artist</b>: ${song.Artist}<br />
-            <b>Year</b>: ${song.Year} <br />
-            <b>Views</b>: ${song.Views} <br />
-            </div>
-            <div class="music-container">
-        <audio src="mp3/${song.Play}.mp3" id="audio"></audio>
-        <div class="buttons">
-            <button id="play" class="play-btn">
-                <i class="fas fa-play"></i>
-            </button>
-        </div>
-        
-        <div class="progress-wrapper">
-            <div class="progress-bar">
-        </div>
-        </div>
-
-        <div class="volume-wrapper">
-            <button id="volume">
-                <i class="fa-solid fa-volume-off"></i>
-            </button>
-        </div>
-            
-      </div>
-      </div>
-
-      
-    `;
-  }
-
-
-  
 
   
 $(document).ready(function() { 
@@ -120,19 +81,22 @@ alert('Error - ' + xhr.status + ': ' + xhr.statusText);
 </script>
 </head>
 	<body>
+    <div class="info-wrapper">
 	<h1>Youtube's Non Copyright Music</h1>
-    <p>This program returns youtubes a list of the top 10 most viewed youtube videos</p>
+    <p>This program returns youtubes list of the top 10 most viewed youtube videos</p>
     <p>By Clicking the links below you can view the list or my personal list</p>
-		<a href="year" class="category">Top 10 Most Viewed Non Copyright Song</a><br />
-		<a href="box" class="category">My Top 10 Most Viewed Non Copyright Song</a>
+		<a href="year" class="category" id="top">Top 10 Most Viewed Non Copyright Song</a><br />
+		<a href="box" class="category" id="myTop">My Top 10 Most Viewed Non Copyright Song</a>
 		<h3 id="mytitle">Title Will Go Here</h3>
+      </div>
 		<div id="list">
       
 
 		</div>
-		<div id="output">Results go here</div>
+		
+    <button id="mainMenu">Back to top</button>
     
     
-  <script src="script.js"></script>
+  <script src="script.js"></script>  
 	</body>
 </html>

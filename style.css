@@ -13,13 +13,15 @@
   display: flex;
 }
 
-.film-wrapper{
+.song-wrapper{
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-  .film{
+  .song{
+    overflow: hidden;
+    margin-top: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
@@ -27,7 +29,7 @@
     background-color: bisque
   }
 
-  .film-details{
+  .song-details{
     margin-left: 10px;
     width: 100%;
     background-color: inherit;
@@ -99,4 +101,28 @@
     font-size: 25px;
     cursor: pointer;
     padding: 5px;
+}
+
+#mainMenu{
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: rgb(245, 186, 115);
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.info-wrapper{
+  margin: 10px;
+}
+
+a{
+  text-decoration: none;
 }
