@@ -15,7 +15,7 @@ function musicTemplate(song){
             <b>Views</b>: ${song.Views} <br />
             </div>
             <div class="music-container">
-        <audio src="mp3/${song.Play}" id="audio"></audio>
+        <audio src="mp3/${song.Play}" id="audio" class="audio"></audio>
         <div class="buttons">
             <button id="play" class="play-btn">
                 <i class="fas fa-play"></i>
@@ -28,115 +28,88 @@ function musicTemplate(song){
         </div>
 
         <div class="volume-wrapper">
-            <button id="volume">
+            <button id="volume" class = "volume">
                 <i class="fa-solid fa-volume-off"></i>
             </button>
         </div>
             
       </div>
       </div>
-  
     `
-  
   }
 
-
 function wrapper(){
-const playBtn = document.querySelector('.play-btn')
-const audio = document.querySelector('#audio')
-const progress = document.querySelector('.progress-bar')
-const musicContainer = document.querySelector('.music-container')
+const playBtn = document.querySelectorAll('.play-btn')
+const audio = document.querySelectorAll('.audio')
+const progress = document.querySelectorAll('.progress-bar')
+const musicContainer = document.querySelectorAll('.music-container')
 const progressWrapper = document.querySelector('.progress-wrapper')
-const volume = document.querySelector('#volume')
+const volume = document.querySelectorAll('.volume')
 const volumeWrapper = document.querySelector('.volume-wrapper')
 
+  
 
-function playSong(){
-    musicContainer.classList.add('play')
-    playBtn.querySelector('i.fas').classList.remove('fa-play')
-    playBtn.querySelector('i.fas').classList.add('fa-pause')
 
-    audio.volume = 0.2
-    audio.play()
-}
-
-volumeWrapper.classList.add('low')
-
-function volumeMid(){
-    volumeWrapper.classList.add('medium')
-    volume.querySelector('i.fa-solid').classList.add('fa-volume-low')
-    volume.querySelector('i.fa-solid').classList.remove('fa-volume-off')
-    volumeWrapper.classList.remove('low')
-    audio.volume = 0.5
-}
-
-function volumeHigh(){
-    volume.querySelector('i.fa-solid').classList.add('fa-volume-high')
-    volume.querySelector('i.fa-solid').classList.remove('fa-volume-low')
-    volumeWrapper.classList.remove('medium')
-    audio.volume = 0.8
-}
-
-function volumeLow(){
+for(let i = 0; i < playBtn.length; i++){
+  audio[i].volume = 0.2
+  playBtn[i].addEventListener('click', () => {
+    if(playBtn[i].querySelector('i.fas').classList.contains('fa-play')){
+    playBtn[i].querySelector('i.fas').classList.remove('fa-play')
+    playBtn[i].querySelector('i.fas').classList.add('fa-pause')
     
-    volume.querySelector('i.fa-solid').classList.add('fa-volume-off')
-    volume.querySelector('i.fa-solid').classList.remove('fa-volume-high')
-    volumeWrapper.classList.add('low')
-    audio.volume = 0.2
+    audio[i].play()
+    }else {
+    playBtn[i].querySelector('i.fas').classList.add('fa-play')
+    playBtn[i].querySelector('i.fas').classList.remove('fa-pause')
+    audio[i].pause()
+    }
+  })
 }
+
+
+  for(let i = 0; i < volume.length; i++){
+    volume[i].addEventListener('click', () => {
+      if(volume[i].querySelector('i.fa-solid').classList.contains('fa-volume-off')){
+        volume[i].querySelector('i.fa-solid').classList.add('fa-volume-low')
+        volume[i].querySelector('i.fa-solid').classList.remove('fa-volume-off')
+        audio[i].volume = 0.7
+      }else if(volume[i].querySelector('i.fa-solid').classList.contains('fa-volume-low')){
+        volume[i].querySelector('i.fa-solid').classList.add('fa-volume-high')
+        volume[i].querySelector('i.fa-solid').classList.remove('fa-volume-low')
+        audio[i].volume = 1
+      }
+      else if(volume[i].querySelector('i.fa-solid').classList.contains('fa-volume-high')){
+        volume[i].querySelector('i.fa-solid').classList.add('fa-volume-off')
+        volume[i].querySelector('i.fa-solid').classList.remove('fa-volume-high')
+        audio[i].volume = 0.4
+      }
+    
+    })
+  }
 
 function updateProgress(e){
     const {duration, currentTime} = e.srcElement
     const progressPercent = (currentTime / duration) * 100
-    progress.style.width = `${progressPercent}%`
+    bar = e.srcElement.parentElement.children[2].firstElementChild
+    
+    bar.style.width = `${progressPercent}%`
+  
 }
 
 function setProgress(e){
     const width = this.clientWidth
     const clickX = e.offsetX
     const duration = audio.duration
-
+    
     audio.currentTime = (clickX / width) * duration
 }
 
-function pauseSong(){
-    musicContainer.classList.remove('play')
-    playBtn.querySelector('i.fas').classList.add('fa-play')
-    playBtn.querySelector('i.fas').classList.remove('fa-pause')
+  audio.forEach(item => {
+    item.addEventListener('timeupdate', updateProgress)
+  })
 
-    audio.pause()
-}
-
-
-playBtn.addEventListener('click', () => {
-    const isPlaying = musicContainer.classList.contains('play')
-
-    if(isPlaying){
-        pauseSong()
-    }else {
-        playSong()
-    }
-})
-
-audio.addEventListener('timeupdate', updateProgress)
 
 progressWrapper.addEventListener('click', setProgress)
-
-volume.addEventListener('click', () => {
-    const lowAudio = volumeWrapper.classList.contains('low')
-    const medAudio = volumeWrapper.classList.contains('medium')
-
-
-    if(lowAudio){
-        volumeMid()
-    }else if (medAudio){
-        volumeHigh()
-    }else {
-        volumeLow()
-    }
-})
-
-
 
 }
 window.onscroll = function() {BtnDisplay()};
@@ -157,7 +130,7 @@ function slowDown(){
   setTimeout(wrapper, 1000)
 }
 
-topMV.addEventListener('click', slowDown);
-myTop.addEventListener('click', slowDown);
+topMV.addEventListener('click', slowDown)
+myTop.addEventListener('click', slowDown)
 
-backToTop.addEventListener('click',resetScroll );
+backToTop.addEventListener('click',resetScroll )
