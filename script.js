@@ -51,6 +51,10 @@ const volumeWrapper = document.querySelector('.volume-wrapper')
 
 
 for(let i = 0; i < playBtn.length; i++){
+  
+  let currentlyPlaying
+  
+  
   audio[i].volume = 0.2
   playBtn[i].addEventListener('click', () => {
     if(playBtn[i].querySelector('i.fas').classList.contains('fa-play')){
@@ -63,8 +67,18 @@ for(let i = 0; i < playBtn.length; i++){
     playBtn[i].querySelector('i.fas').classList.remove('fa-pause')
     audio[i].pause()
     }
+
+    for(let j = 0; j < playBtn.length; j++){
+      if(!(playBtn[i] == playBtn[j])){
+        playBtn[j].querySelector('i.fas').classList.add('fa-play')
+    playBtn[j].querySelector('i.fas').classList.remove('fa-pause')
+    audio[j].pause()
+      }
+    }
   })
+  
 }
+
 
 
   for(let i = 0; i < volume.length; i++){
